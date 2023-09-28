@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-myservicea
+  namespace: test-dev
+spec:
+  rules:
+  - host: ingress-test.xrw.ae
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: website-service
+            port:
+              number: 7004
+  ingressClassName: nginx
